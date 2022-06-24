@@ -1,0 +1,29 @@
+{
+  "name": "3d-viewer",
+  "version": "0.0.1",
+  "description": "3D Viewer based on three.js and ifc.js",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PASS-TECH/3d-viewer.git"
+  },
+  "author": "Nader Boutros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PASS-TECH/3d-viewer/issues"
+  },
+  "homepage": "https://github.com/PASS-TECH/3d-viewer#readme",
+  "dependencies": {
+    "three": "^0.135.0",
+    "three-mesh-bvh": "^0.5.11",
+    "web-ifc-three": "^0.0.117"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "rollup": "^2.75.7"
+  }
+}
