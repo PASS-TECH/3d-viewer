@@ -20,7 +20,8 @@
   "dependencies": {
     "three": "^0.135.0",
     "three-mesh-bvh": "^0.5.11",
-    "web-ifc-three": "^0.0.117"
+    "web-ifc-three": "^0.0.117",
+    "web-ifc-viewer": "^1.0.202"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
