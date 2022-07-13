@@ -4,7 +4,7 @@ import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js';
 import { Vector3 } from 'three';
 
 const container = document.getElementById('viewer-container');
-const viewer = new IfcViewerAPI({ container, backgroundColor: new THREE.Color(0xffffff) });
+const viewer = new IfcViewerAPI({ container, backgroundColor: new THREE.Color(0xddddff) });
 viewer.grid.setGrid();
 viewer.axes.setAxes();
 const scene = viewer.context.getScene();
@@ -21,8 +21,9 @@ const params = {
 };
 
 //Initial cone
-const geometry1 = new THREE.ConeGeometry( 0.1, 0.3, 5);
-const material1 = new THREE.MeshBasicMaterial( {color: 0xff0000} );
+const geometry1 = new THREE.ConeGeometry( 0.05, 0.15, 8);
+geometry1.translate(0,-0.075,0);
+const material1 = new THREE.MeshLambertMaterial( {color: 0xff0000} );
 
 window.addEventListener( 'load', init );
 
@@ -71,7 +72,7 @@ async function loadGltf(url) {
 }
 
 function checkIntersection(){
-    let clicPosition = viewer.context.castRayIfc();
+    const clicPosition = viewer.context.castRayIfc();
     console.log('Intersection : ', clicPosition);
     const p = clicPosition?.point;
     let n = new Vector3();
@@ -129,20 +130,23 @@ addEventListener('dblclick', () => {
         checkIntersection(); 
     }
 });
-addEventListener( 'pointermove', onPointerMove );
 
-function onPointerMove( event ) {
+addEventListener( 'pointermove', (event) => {
     if ( event.isPrimary ) {
-        
+        //do something
     }
-}
+});
 
 function removeCones() {
-    cones.forEach( function ( cone ) {
+    cones.forEach((cone) => {
+        //scene.remove( cone );
+        cone.removeFromParent();
+        cone.geometry.dispose();
+        cone.material.dispose();
+        cone.geometry = null;
+        cone.material = null;
+    });
 
-        scene.remove( cone );
-
-    } );
-
-    cones.length = 0;
+    //cones.length = 0;
+    cones = [];
 }
